@@ -39,7 +39,12 @@ app.put('/vevok/:id', (req, res) => {
     vevok[id] = ujVev;
     res.send(`A modosított vevo adatai: v: ${ujVev.nev}, k: ${ujVev.kor}, f: ${ujVev.foglalkozas}`);
 });
-
+//-- vevo torlese
+app.delete('/vevok/:id', (req, res) => {
+    let id = req.params.id;
+    vevok.splice(id, 1);
+    res.send(`A törlendő vevo adatai: v: ${vevok[id].nev}, k: ${vevok[id].kor}, f: ${vevok[id].foglalkozas}`);
+});
 app.listen(port, () => {
     console.log(`Express szerver indítva. Port: ${port}`);
 });
